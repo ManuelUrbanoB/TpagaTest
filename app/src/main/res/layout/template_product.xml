@@ -5,6 +5,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable name="payment" type="development.tpaga.co.ui.modules.main.models.PaymentRequest"/>
+        <variable name="clickBuy" type="io.reactivex.subjects.Subject"/>
     </data>
     <LinearLayout
 
@@ -16,7 +17,11 @@
                 app:cardElevation="2dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout
+
+                    android:layout_margin="10dp"
+                    android:orientation="vertical" android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <TextView
                         android:layout_marginTop="10dp"
                         android:text="@string/descripci_n_del_producto"
@@ -41,6 +46,11 @@
                         android:text='@{""+payment.cost}'
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
+                <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:onClick="@{()->clickBuy.onNext(payment)}"
+                        android:textColor="@color/white"
+                        android:text="@string/comprar"/>
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
