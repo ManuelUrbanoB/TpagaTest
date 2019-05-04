@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Tpaga</string>
+    <string name="compras_y_servicios">COMPRAS Y SERVICIOS</string>
+    <string name="hola">¡Hola!</string>
+    <string name="realiza_tus_pagos_y_conpras_tranquilamente">Realiza tus pagos y conpras tranquilamente.</string>
+    <string name="nosotros_hacemos_que_sea_seguro_y_m_y_f_cil_para_ti">Nosotros hacemos que sea seguro y múy fácil para
+        ti
+    </string>
+    <string name="imagen_personas_con_celular">Imagen Personas con celular</string>
+    <string name="descripci_n_del_producto">Descripción del producto</string>
+    <string name="precio_del_producto">Precio del producto</string>
 </resources>
