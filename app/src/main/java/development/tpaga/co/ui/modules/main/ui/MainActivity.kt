@@ -1,6 +1,7 @@
 package development.tpaga.co.ui.modules.main.ui
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -20,6 +21,11 @@ import android.net.Uri
 import development.tpaga.co.ui.modules.main.utils.ERROR_APP_BUY
 import development.tpaga.co.ui.modules.main.utils.ERROR_SERVER_CREATE
 import org.jetbrains.anko.longToast
+import android.text.format.Formatter.formatIpAddress
+import android.net.wifi.WifiManager
+
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -65,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         val nowAsISO = df.format(Date())
         product1.expires_at = nowAsISO
         val timestamp = System.currentTimeMillis()
-        product1.idempotency_token = "bWluaWFwcC1nYXRvMTptaW5pYXBwbWEtMTIz"+timestamp
+        product1.idempotency_token = "Producto1-bWluaWFwcC1nYXRvMTptaW5pYXBwbWEtMTIz$timestamp"
         product1.order_id = "1212"
         product1.purchase_description = "Compra producto 1"
         product1.purchase_details_url = "https://example.com/compra/1212"
@@ -73,6 +79,62 @@ class MainActivity : AppCompatActivity() {
         product1.terminal_id = "sede_1"
         product1.user_ip_address = "61.1.224.56"
         listItems.add(product1)
+
+        val product2 = PaymentRequest()
+        product2.cost = 10000
+        df.timeZone = tz
+        product2.expires_at = nowAsISO
+        product2.idempotency_token = "Producto2-bWluaWFwcC1nYXRvMTptaW5pYXBwbWEtMTIz$timestamp"
+        product2.order_id = "1212"
+        product2.purchase_description = "Compra producto 2"
+        product2.purchase_details_url = "https://example.com/compra/1212"
+        product2.voucher_url = "https://example.com/comprobante/348820"
+        product2.terminal_id = "sede_1"
+        product2.user_ip_address = "61.1.224.56"
+        listItems.add(product2)
+
+
+        val product3 = PaymentRequest()
+        product3.cost = 15000
+        df.timeZone = tz
+        product3.expires_at = nowAsISO
+        product3.idempotency_token = "Producto3-bWluaWFwcC1nYXRvMTptaW5pYXBwbWEtMTIz$timestamp"
+        product3.order_id = "1212"
+        product3.purchase_description = "Compra producto 3"
+        product3.purchase_details_url = "https://example.com/compra/1212"
+        product3.voucher_url = "https://example.com/comprobante/348820"
+        product3.terminal_id = "sede_1"
+        product3.user_ip_address = "61.1.224.56"
+        listItems.add(product3)
+
+        val product4 = PaymentRequest()
+        product4.cost = 15000
+        df.timeZone = tz
+        product4.expires_at = nowAsISO
+        product4.idempotency_token = "Producto4-bWluaWFwcC1nYXRvMTptaW5pYXBwbWEtMTIz$timestamp"
+        product4.order_id = "1212"
+        product4.purchase_description = "Compra producto 4"
+        product4.purchase_details_url = "https://example.com/compra/1212"
+        product4.voucher_url = "https://example.com/comprobante/348820"
+        product4.terminal_id = "sede_1"
+        product4.user_ip_address = "61.1.224.56"
+        listItems.add(product4)
+
+        val product5 = PaymentRequest()
+        product5.cost = 15000
+        df.timeZone = tz
+        product5.expires_at = nowAsISO
+        product5.idempotency_token = "Producto5-bWluaWFwcC1nYXRvMTptaW5pYXBwbWEtMTIz$timestamp"
+        product5.order_id = "1212"
+        product5.purchase_description = "Compra producto 5"
+        product5.purchase_details_url = "https://example.com/compra/1212"
+        product5.voucher_url = "https://example.com/comprobante/348820"
+        product5.terminal_id = "sede_1"
+        product5.user_ip_address = "61.1.224.56"
+        listItems.add(product5)
+
+
+
         adapter.listItems = listItems
     }
 
