@@ -1,66 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
+        tools:context=".ui.modules.main.ui.main.MainActivity"
         android:layout_height="match_parent"
-        tools:context=".ui.modules.main.ui.main.MainActivity">
-    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
-        <ImageView
-                android:scaleType="centerCrop"
-                android:src="@drawable/collague_people"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:contentDescription="@string/imagen_personas_con_celular"/>
+        android:layout_width="match_parent">
+
+    <LinearLayout
+
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+    >
+        <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <ImageView
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/collague_people"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:contentDescription="@string/imagen_personas_con_celular"/>
+            <LinearLayout
+                    android:layout_marginBottom="20dp"
+                    android:gravity="bottom"
+                    android:layout_gravity="center"
+                    android:orientation="vertical" android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <TextView
+                        android:textStyle="bold"
+                        android:textSize="23sp"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:text="@string/hola"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:layout_gravity="center"/>
+                <TextView
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:text="@string/realiza_tus_pagos_y_conpras_tranquilamente"
+                        android:textColor="@color/white"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <TextView
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:text="@string/nosotros_hacemos_que_sea_seguro_y_m_y_f_cil_para_ti"
+                        android:textColor="@color/white"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </FrameLayout>
         <LinearLayout
-                android:layout_marginBottom="20dp"
-                android:gravity="bottom"
-                android:layout_gravity="center"
-                android:orientation="vertical" android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:background="@color/white"
+                android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
             <TextView
-                    android:textStyle="bold"
-                    android:textSize="23sp"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:text="@string/hola"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:layout_gravity="center"/>
-            <TextView
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:text="@string/realiza_tus_pagos_y_conpras_tranquilamente"
-                    android:textColor="@color/white"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
-            <TextView
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:text="@string/nosotros_hacemos_que_sea_seguro_y_m_y_f_cil_para_ti"
-                    android:textColor="@color/white"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                    android:text="@string/compras_y_servicios"
+                    android:textColor="@color/black"
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            <View android:background="@color/greyc3" android:layout_width="match_parent" android:layout_height="1dp"/>
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerProductos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+            <View android:background="@color/greyc3" android:layout_width="match_parent" android:layout_height="1dp"/>
+
         </LinearLayout>
 
-    </FrameLayout>
-    <LinearLayout
-            android:background="@color/white"
-            android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
-        <TextView
-                android:text="@string/compras_y_servicios"
-                android:textColor="@color/black"
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        <View android:background="@color/greyc3" android:layout_width="match_parent" android:layout_height="1dp"/>
-        <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerProductos"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-        </android.support.v7.widget.RecyclerView>
-        <View android:background="@color/greyc3" android:layout_width="match_parent" android:layout_height="1dp"/>
 
     </LinearLayout>
-
-
-</LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+            android:id="@+id/btn_go_to_payment_response"
+            android:layout_margin="15dp"
+            android:layout_gravity="end|bottom"
+            android:src="@drawable/ic_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+</FrameLayout>

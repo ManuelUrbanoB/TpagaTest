@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager
 import development.tpaga.co.R
 import development.tpaga.co.ui.modules.main.adapters.ProductAdapter
 import development.tpaga.co.ui.modules.main.models.PaymentRequest
+import development.tpaga.co.ui.modules.main.ui.listPaymentResponse.ListPaymentResponseActivity
 import development.tpaga.co.ui.modules.main.utils.ERROR_APP_BUY
 import development.tpaga.co.ui.modules.main.utils.ERROR_SERVER_CREATE
 import development.tpaga.co.ui.modules.main.utils.LifeDisposable
@@ -18,6 +19,7 @@ import development.tpaga.co.ui.modules.main.utils.authorizationUser
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.longToast
+import org.jetbrains.anko.startActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -42,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        navigations()
         listItems = ArrayList()
         loadDataProducts()
         recyclerProductos.layoutManager = LinearLayoutManager(this)
@@ -51,7 +54,9 @@ class MainActivity : AppCompatActivity() {
                 onNext = { paymentResponse ->
                     thread {
                         // se inserta la peticion de compra del nuevo producto en el storage
-                        viewModel.insertPaymentResonse(paymentResponse)
+                        try {
+                            viewModel.insertPaymentResonse(paymentResponse)
+                        }catch (e : Exception){ }
                     }
                     // se guarda el token de la ultima compra en sahredPreferences
                     editor.putString("lastProductToken", paymentResponse.token)
@@ -70,6 +75,18 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /***
+     * @function función que permite crear la navegacion del activity
+     */
+    private fun navigations(){
+        btn_go_to_payment_response.setOnClickListener {
+            startActivity<ListPaymentResponseActivity>()
+        }
+    }
+
+    /***
+     * @funtcion Función que permite cargar los productos a vender
+     */
     @SuppressLint("SimpleDateFormat")
     private fun loadDataProducts() {
         val product1 = PaymentRequest()
@@ -141,9 +158,6 @@ class MainActivity : AppCompatActivity() {
         product5.terminal_id = "sede_1"
         product5.user_ip_address = "61.1.224.56"
         listItems.add(product5)
-
-
-
         adapter.listItems = listItems
     }
 

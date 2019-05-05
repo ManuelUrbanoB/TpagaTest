@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="payment" type="development.tpaga.co.ui.modules.main.models.PaymentResponse"/>
+    </data>
+    <android.support.v7.widget.CardView
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <LinearLayout
+                    android:padding="20dp"
+                    android:orientation="vertical" android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:text="@string/descripci_n_del_producto"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView
+                        android:text="@{payment.purchase_description}"
+                        android:textSize="25sp"
+                        android:textColor="@color/black"
+                        tools:text="Compra de producto 1"
+                        android:id="@+id/purchase_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <View android:layout_width="match_parent" android:background="@color/greyc3" android:layout_height="2dp"/>
+
+            <LinearLayout
+                    android:padding="20dp"
+                    android:orientation="vertical" android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:text="@string/precio_del_producto"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView
+                        android:text='@{""+payment.cost}'
+                        android:textSize="25sp"
+                        android:textColor="@color/black"
+                        tools:text="15000"
+                        android:id="@+id/purchase_cost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <View android:layout_width="match_parent" android:background="@color/greyc3" android:layout_height="2dp"/>
+
+            <LinearLayout
+                    android:padding="20dp"
+                    android:orientation="vertical" android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:text="@string/estado"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView
+                        android:text="@{payment.status}"
+                        android:textSize="25sp"
+                        android:textColor="@color/black"
+                        tools:text="Pagado"
+                        android:id="@+id/purchase_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</layout>

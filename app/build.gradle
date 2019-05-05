@@ -76,5 +76,4 @@ dependencies {
     kapt "android.arch.lifecycle:compiler:$arch_version"
 
 
-
 }

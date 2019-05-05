@@ -13,5 +13,7 @@
     <string name="comprar">Comprar</string>
     <string name="estado">Estado</string>
     <string name="descripci_n_de_la_compra">Descripción de la compra</string>
+    <string name="no_se_ha_realizado_ninguna_compra_por_el_momento">No se ha realizado ninguna compra por el momento
+    </string>
 
 </resources>

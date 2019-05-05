@@ -16,16 +16,21 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.modules.main.ui.listPaymentResponse.ListPaymentResponseActivity">
+        </activity>
         <activity android:name=".ui.modules.main.ui.productLink.ProductLinkActivity">
             <tools:validation testUrl="https://murbano.com/compra/"/>
+
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
+
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
+
                 <data
-                        android:scheme="https"
                         android:host="murbano.com"
-                        android:pathPrefix="/compra"/>
+                        android:pathPrefix="/compra"
+                        android:scheme="https"/>
             </intent-filter>
         </activity>
         <activity android:name=".ui.modules.main.ui.main.MainActivity">

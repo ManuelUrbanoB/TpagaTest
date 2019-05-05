@@ -13,6 +13,7 @@ import org.jetbrains.anko.longToast
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
+import kotlin.concurrent.thread
 
 class ProductLinkActivity : AppCompatActivity() {
 
@@ -27,7 +28,7 @@ class ProductLinkActivity : AppCompatActivity() {
     }
 
     /***
-     * @function Función que permite colocar los datos el pedido en la vista
+     * @function Función que permite colocar los datos del pedido en la vista
      */
     private fun setDataProduct(){
         val lastToken = preferences.getString("lastProductToken", "")
@@ -63,7 +64,12 @@ class ProductLinkActivity : AppCompatActivity() {
         viewModel.getPaymentResponsePersistence(token).subscribeBy(onNext = {
             if(it.id != null){
                 it.status = status
-                viewModel.updatePaymentResponsePersistence(it)
+                try{
+                    thread{
+                        viewModel.updatePaymentResponsePersistence(it)
+                    }
+
+                }catch(e: Exception){ }
             }
         },onError = {
             toast(PRODUCTO_NO_EXIST_PERSISTENCE)
