@@ -1,4 +1,4 @@
-package development.tpaga.co.ui.modules.main.ui
+package development.tpaga.co.ui.modules.main.ui.main
 
 import android.arch.lifecycle.ViewModel
 import development.tpaga.co.ui.modules.main.models.PaymentRequest

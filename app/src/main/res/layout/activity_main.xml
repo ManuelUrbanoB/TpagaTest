@@ -5,7 +5,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.modules.main.ui.MainActivity">
+        tools:context=".ui.modules.main.ui.main.MainActivity">
     <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
         <ImageView
                 android:scaleType="centerCrop"
