@@ -11,6 +11,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.activity_product_link.*
 import org.jetbrains.anko.longToast
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ProductLinkActivity : AppCompatActivity() {
@@ -21,6 +22,14 @@ class ProductLinkActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_link)
         preferences = this.getSharedPreferences("PreferencesPayment", Context.MODE_PRIVATE)
+        setDataProduct()
+
+    }
+
+    /***
+     * @function Función que permite colocar los datos el pedido en la vista
+     */
+    private fun setDataProduct(){
         val lastToken = preferences.getString("lastProductToken", "")
         if(lastToken == ""){
             startActivity<MainActivity>()
@@ -37,10 +46,27 @@ class ProductLinkActivity : AppCompatActivity() {
             }else{
                 purchase_state.text = it.status
             }
+            updatePaymentResponsePersistence(it.token,it.status)
         }, onError = {
             longToast(ERROR_SERVER_CREATE)
             longToast(STATUS_PAYMENT_ERROR)
             startActivity<MainActivity>()
+        })
+    }
+
+    /***
+     * @entries token
+     * @entries status
+     * @function Función que permite actualizar el estado de un pedido
+     */
+    private fun updatePaymentResponsePersistence(token:String, status: String){
+        viewModel.getPaymentResponsePersistence(token).subscribeBy(onNext = {
+            if(it.id != null){
+                it.status = status
+                viewModel.updatePaymentResponsePersistence(it)
+            }
+        },onError = {
+            toast(PRODUCTO_NO_EXIST_PERSISTENCE)
         })
     }
 

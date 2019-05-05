@@ -1,6 +1,13 @@
 package development.tpaga.co.ui.modules.main.models
 
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
+
+@Entity
 class PaymentResponse {
+    @PrimaryKey(autoGenerate = true)
+    var id:Int? = null
+
     var miniapp_user_token:String? = null
     var cost:Int = 0
     var purchase_details_url:String = ""

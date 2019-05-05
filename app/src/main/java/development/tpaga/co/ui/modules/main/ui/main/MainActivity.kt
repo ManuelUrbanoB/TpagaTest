@@ -22,6 +22,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.concurrent.thread
 
 
 class MainActivity : AppCompatActivity() {
@@ -48,6 +49,11 @@ class MainActivity : AppCompatActivity() {
         diss add adapter.clickBuyProduct.subscribeBy(onNext = {
             viewModel.getPaymentRequest(it, authorizationUser).subscribeBy(
                 onNext = { paymentResponse ->
+                    thread {
+                        // se inserta la peticion de compra del nuevo producto en el storage
+                        viewModel.insertPaymentResonse(paymentResponse)
+                    }
+                    // se guarda el token de la ultima compra en sahredPreferences
                     editor.putString("lastProductToken", paymentResponse.token)
                     editor.commit()
                     editor.apply()

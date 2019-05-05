@@ -29,6 +29,7 @@ android {
 }
 def koin_version = '2.0.0-rc-2'
 def anko_version = '0.10.8'
+def arch_version = '1.1.1'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -65,5 +66,15 @@ dependencies {
     implementation 'com.android.support:cardview-v7:28.0.0'
     //RecyclerView
     implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+    //ARCH-PERSISTENCE
+    implementation "android.arch.persistence.room:runtime:$arch_version"
+    implementation "android.arch.persistence.room:rxjava2:$arch_version"
+    implementation "android.arch.lifecycle:extensions:$arch_version"
+    implementation "android.arch.lifecycle:reactivestreams:$arch_version"
+    kapt "android.arch.persistence.room:compiler:$arch_version"
+    kapt "android.arch.lifecycle:compiler:$arch_version"
+
+
 
 }
